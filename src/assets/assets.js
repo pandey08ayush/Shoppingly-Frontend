@@ -77,13 +77,15 @@ import Winter from './Winter.jpg'
 import jeans from './jeans.jpg'
 import hero from './hero.jpg'
 import banner from './banner.jpg'
-import herosection from './.herosection'
+import herosection from './herosection.jpg'
+import herosection_sm from './herosection_sm.jpg'
 
 export const assets = {
   logo,
   banner,
   herosection,
-  ban,
+  herosection_sm,
+  // ban,
   search_icon,
   remove_icon,
   arrow_right_icon_colored,

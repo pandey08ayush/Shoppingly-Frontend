@@ -2,6 +2,7 @@ import Banner from "../components/Banner";
 import BestSeller from "../components/BestSeller";
 import Category from "../components/Category";
 import NewsLetter from "../components/NewsLetter";
+import Testinomials from "../components/Testinomials";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner />
       <Category />
       <BestSeller />
+      <Testinomials />
       <NewsLetter />
     </div>
   );
