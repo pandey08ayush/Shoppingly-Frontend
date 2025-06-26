@@ -183,7 +183,7 @@ const Navbar = () => {
       <div
         className={`${
           open ? "flex" : "hidden"
-        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}
+        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden z-50`}
       >
         <Link onClick={() => setOpen(false)} to={"/"}>
           Home
@@ -195,13 +195,13 @@ const Navbar = () => {
         {user ? (
           <div className="relative group">
             <img src={assets.profile_icon} alt="" className="w-10" />
-            <ul className="hidden group-hover:block absolute top-10 roght-0 bg-white shadow border border-gray-200 py-2 w-30 rounded-md z-40 text-sm">
+            <ul className="hidden group-hover:block absolute top-10 roght-0 bg-white shadow border border-gray-200 py-2 w-30 rounded-md z-40 text-sm  ">
               <li
                 onClick={() => navigate("/my-orders")}
                 className="p-1.5 cursor-pointer"
               >
                 My Orders
-              </li>
+              </li> 
               <li
                 className="cursor-pointer p-1.5"
                 onClick={() => {
