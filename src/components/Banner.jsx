@@ -21,13 +21,16 @@ const Banner = () => {
       ">
         {/* <h1 className="text-4xl md:text-4xl font-bold text-center md:text-left max-w-72 md:max-w-80 leading-tight lg:leading-15"> */}
         <h1 className="max-md:hidden font-bold text-4xl max-lg:text-3xl max-md:text-2xl text-[#4B0082]" >
-          Freshness You Can Trust, <br />Savings You will Love!
+          Style That Speaks for You
+, <br />Discover trending fashion
+
+
         </h1>
 
         <div className="flex items-center mt-6 font-medium gap-6 ">
           <Link
             to={"/products"}
-            className="flex group items-center gap-2 px-7 rounded text-white  py-3 bg-primary"
+            className="max-md:hidden flex group items-center gap-2 px-7 rounded text-white  py-3 bg-primary"
           >
             Shop Now
             <img
