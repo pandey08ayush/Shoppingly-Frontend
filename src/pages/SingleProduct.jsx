@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import ProductCard from "../components/ProductCard";
+
 const SingleProduct = () => {
   const { products, navigate, addToCart } = useAppContext();
   const { id } = useParams();
@@ -10,24 +11,26 @@ const SingleProduct = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const product = products.find((product) => product._id === id);
   console.log("product", product);
+
   useEffect(() => {
-    if (products.length > 0) {
+    if (products.length > 0 && product) {
       let productsCopy = products.slice();
       productsCopy = productsCopy.filter(
-        (product) => product.category === product.category
+        (p) => p.category === product.category && p._id !== product._id
       );
       setRelatedProducts(productsCopy.slice(0, 5));
     }
-  }, [products]);
+  }, [products, product]);
 
   useEffect(() => {
     setThumbnail(product?.image[0] ? product.image[0] : null);
   }, [product]);
+
   return (
     product && (
       <div className="mt-16">
         <p>
-          <Link to="/">Home</Link>/<Link to={"/products"}> Products</Link> /
+          <Link to="/">Home</Link>/<Link to="/products"> Products</Link> /
           <Link to={`/products/${product.category.toLowerCase()}`}>
             {" "}
             {product.category}
@@ -45,7 +48,7 @@ const SingleProduct = () => {
                   className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
                   <img
-                    src={`http://localhost:5000/images/${image}`}
+                    src={`https://shoppingly-m7nh.onrender.com/images/${image}`}
                     alt={`Thumbnail ${index + 1}`}
                   />
                 </div>
@@ -54,7 +57,7 @@ const SingleProduct = () => {
 
             <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
               <img
-                src={`http://localhost:5000/images/${thumbnail}`}
+                src={`https://shoppingly-m7nh.onrender.com/images/${thumbnail}`}
                 alt="Selected product"
               />
             </div>
@@ -66,19 +69,19 @@ const SingleProduct = () => {
             <div className="flex items-center gap-0.5 mt-1">
               {Array(5)
                 .fill("")
-                .map(
-                  (_, i) =>
-                    product.rating >
-                    (
-                      <img
-                        src={i < 4 ? assets.star_icon : assets.star_dull_icon}
-                        alt="star"
-                        key={i}
-                        className="w-3.5 md:w-4"
-                      />
-                    )
-                )}
-              <p className="text-base ml-2">(4)</p>
+                .map((_, i) => (
+                  <img
+                    src={
+                      i < product.rating
+                        ? assets.star_icon
+                        : assets.star_dull_icon
+                    }
+                    alt="star"
+                    key={i}
+                    className="w-3.5 md:w-4"
+                  />
+                ))}
+              <p className="text-base ml-2">({product.rating})</p>
             </div>
 
             <div className="mt-6">
@@ -116,7 +119,8 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-        {/* related prodcuts  */}
+
+        {/* Related products */}
         <div className="flex flex-col items-center mt-20">
           <div className="flex flex-col items-center w-max">
             <p className="text-2xl font-medium">Related Products</p>
@@ -130,6 +134,7 @@ const SingleProduct = () => {
                 <ProductCard key={index} product={product} />
               ))}
           </div>
+
           <button
             onClick={() => {
               navigate("/products");
@@ -144,4 +149,5 @@ const SingleProduct = () => {
     )
   );
 };
+
 export default SingleProduct;
