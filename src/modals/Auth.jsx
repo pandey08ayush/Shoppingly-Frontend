@@ -97,7 +97,6 @@ const Auth = () => {
               click here
             </span>
           </p>
-          <Link className="text-indigo-500 cursor-pointer" to="/seller">Seller Login</Link>
           </>
         )}
         <button className="bg-indigo-500 hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md cursor-pointer">

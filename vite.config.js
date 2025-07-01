@@ -8,6 +8,5 @@ export default defineConfig({
   server: {
     port: process.env.PORT || 5173, // 👈 Let Render pick the port
     host: true,                     // 👈 Listen on all interfaces (0.0.0.0)
-    allowedHosts: ["shoppingly-frontend.onrender.com"],
   }
 });
